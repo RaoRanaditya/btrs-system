@@ -1,25 +1,13 @@
-"""
-schemas.py
-----------
-Pydantic request/response models for the Bug Tracking API.
-"""
-
-from pydantic import BaseModel, Field, UUID4
+from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
 from enum import Enum
 
-
-# ─────────────────────────────────────────────
-# Enums
-# ─────────────────────────────────────────────
-
 class BugStatus(str, Enum):
-    NEW = "new"
-    ASSIGNED = "assigned"
-    IN_PROGRESS = "in_progress"
-    RESOLVED = "resolved"
-
+    NEW = "New"
+    ASSIGNED = "Assigned"
+    IN_PROGRESS = "In Progress"
+    RESOLVED = "Resolved"
 
 class BugSeverity(str, Enum):
     LOW = "low"
@@ -27,30 +15,17 @@ class BugSeverity(str, Enum):
     HIGH = "high"
     CRITICAL = "critical"
 
-
-class PriorityLevel(str, Enum):
-    LOW = "Low"
-    MEDIUM = "Medium"
-    HIGH = "High"
-
-
-# ─────────────────────────────────────────────
-# Bug Schemas
-# ─────────────────────────────────────────────
-
 class BugCreate(BaseModel):
-    title: str = Field(..., min_length=3, max_length=255, example="Login button unresponsive")
-    description: str = Field(..., min_length=10, example="Clicking the login button does nothing on mobile browsers.")
-    module: str = Field(..., max_length=100, example="authentication")
-    severity: BugSeverity = Field(..., example="high")
-    frequency: int = Field(..., ge=1, le=10, description="How often bug occurs (1–10)", example=7)
-    impact: int = Field(..., ge=1, le=10, description="Business/user impact (1–10)", example=8)
-    reproducibility: int = Field(..., ge=1, le=10, description="How easily reproducible (1–10)", example=9)
-    reported_by: Optional[str] = Field(None, max_length=100, example="john.doe@example.com")
-
+    title: str = Field(..., min_length=3, max_length=255)
+    description: str = Field(..., min_length=10)
+    module: str = Field(..., max_length=100)
+    severity: BugSeverity = Field(default=BugSeverity.MEDIUM)
+    frequency: int = Field(default=1, ge=1, le=10)
+    impact: int = Field(default=1, ge=1, le=10)
+    reproducibility: int = Field(default=1, ge=1, le=10)
+    reported_by: Optional[str] = Field(None, max_length=100)
     class Config:
         use_enum_values = True
-
 
 class BugUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=3, max_length=255)
@@ -60,10 +35,8 @@ class BugUpdate(BaseModel):
     frequency: Optional[int] = Field(None, ge=1, le=10)
     impact: Optional[int] = Field(None, ge=1, le=10)
     reproducibility: Optional[int] = Field(None, ge=1, le=10)
-
     class Config:
         use_enum_values = True
-
 
 class BugResponse(BaseModel):
     id: str
@@ -74,40 +47,30 @@ class BugResponse(BaseModel):
     frequency: int
     impact: int
     reproducibility: int
-    bug_type: Optional[str]
-    category: Optional[str]
-    priority: Optional[str]
+    bug_type: Optional[str] = None
+    category: Optional[str] = None
+    priority: Optional[str] = None
     status: str
-    assigned_to: Optional[str]
-    reported_by: Optional[str]
+    assigned_to: Optional[str] = None
+    reported_by: Optional[str] = None
     created_at: datetime
     updated_at: datetime
-
     class Config:
         from_attributes = True
-
 
 class BugListResponse(BaseModel):
     total: int
     bugs: List[BugResponse]
 
-
-# ─────────────────────────────────────────────
-# Workflow Schemas
-# ─────────────────────────────────────────────
-
 class AssignBugRequest(BaseModel):
-    assigned_to: str = Field(..., min_length=2, max_length=100, example="jane.smith@example.com")
-    note: Optional[str] = Field(None, max_length=500, example="Assigned to mobile team.")
-
+    assigned_to: str = Field(..., min_length=2, max_length=100)
+    note: Optional[str] = Field(None, max_length=500)
 
 class UpdateStatusRequest(BaseModel):
-    status: BugStatus = Field(..., example="in_progress")
-    note: Optional[str] = Field(None, max_length=500, example="Started investigation.")
-
+    status: BugStatus = Field(...)
+    note: Optional[str] = Field(None, max_length=500)
     class Config:
         use_enum_values = True
-
 
 class WorkflowResponse(BaseModel):
     bug_id: str
@@ -115,33 +78,24 @@ class WorkflowResponse(BaseModel):
     current_status: str
     message: str
 
-
-# ─────────────────────────────────────────────
-# Fix Suggestion Schemas
-# ─────────────────────────────────────────────
-
 class FixSuggestionResponse(BaseModel):
     id: str
-    bug_id: str
-    suggested_fix: str
-    matched_on: str
-    confidence: str
-    source_bug_title: Optional[str]
+    source_bug_id: Optional[str] = None
+    bug_type: str
+    module: str
+    category: str
+    problem_summary: str
+    fix_description: str
+    confidence_score: float
+    times_applied: int
     created_at: datetime
-
     class Config:
         from_attributes = True
-
 
 class SuggestionsListResponse(BaseModel):
     bug_id: str
     total: int
     suggestions: List[FixSuggestionResponse]
-
-
-# ─────────────────────────────────────────────
-# Generic Response
-# ─────────────────────────────────────────────
 
 class MessageResponse(BaseModel):
     message: str
