@@ -1,16 +1,9 @@
 from functools import lru_cache
 
 class Settings:
-    # SIMPLE FAST FIX (no external dependency)
-    DATABASE_URL = "sqlite:///./test.db"
-
-    DB_POOL_SIZE = 5
-    DB_MAX_OVERFLOW = 10
-    DB_POOL_TIMEOUT = 30
-    DB_POOL_RECYCLE = 1800
-    DB_ECHO = True
-
+    DATABASE_URL: str = "sqlite:///./bugtracker.db"
+    DB_ECHO: bool = False
 
 @lru_cache
-def get_settings():
+def get_settings() -> Settings:
     return Settings()
