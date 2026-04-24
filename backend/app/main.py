@@ -8,6 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from app.routes.bugs import router as bugs_router
 from app.routes.workflow import router as workflow_router
 from app.routes.suggestions import router as suggestions_router
+from app.routes.analytics import router as analytics_router
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(name)s | %(message)s")
 logger = logging.getLogger(__name__)
@@ -41,6 +42,7 @@ async def global_handler(request: Request, exc: Exception):
 app.include_router(bugs_router, prefix="/api/v1")
 app.include_router(workflow_router, prefix="/api/v1")
 app.include_router(suggestions_router, prefix="/api/v1")
+app.include_router(analytics_router, prefix="/api/v1")
 
 @app.get("/health", tags=["System"])
 def health(): return {"status": "ok"}

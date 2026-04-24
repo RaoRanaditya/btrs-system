@@ -4,6 +4,9 @@ routes/workflow.py
 FastAPI route handlers for bug workflow / state-machine transitions.
 All transition logic lives in WorkflowService — this layer only wires
 HTTP → service → HTTP response.
+
+FIX: history endpoint now uses correct BugHistory field names:
+     old_value, new_value, created_at, notes  (not previous_status / changed_at / note)
 """
 
 import logging
@@ -15,7 +18,6 @@ from app.schemas.schemas import (
     AssignBugRequest,
     UpdateStatusRequest,
     WorkflowResponse,
-    BugResponse,
 )
 from app.services.bug_service import BugService
 from app.services.workflow_service import WorkflowService
@@ -34,8 +36,7 @@ router = APIRouter(
 
 def _get_bug_or_404(bug_id: str, db: Session):
     """Fetch bug; raise HTTP 404 when not found."""
-    service = BugService(db)
-    bug = service.get_bug_by_id(bug_id)
+    bug = BugService(db).get_bug_by_id(bug_id)
     if not bug:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -55,8 +56,8 @@ def _get_bug_or_404(bug_id: str, db: Session):
     summary="Assign bug to a user",
     description=(
         "Assigns the bug to a team member. "
-        "Valid only when the bug is in **new** status. "
-        "Automatically transitions status to **assigned**."
+        "Valid only when the bug is in **New** status. "
+        "Automatically transitions status to **Assigned**."
     ),
 )
 def assign_bug(
@@ -64,14 +65,7 @@ def assign_bug(
     payload: AssignBugRequest,
     db: Session = Depends(get_db),
 ):
-    """
-    Assign a bug:
-
-    - **assigned_to**: Email or username of the assignee.
-    - **note**: Optional note logged to bug history.
-    """
     bug = _get_bug_or_404(bug_id, db)
-
     try:
         workflow = WorkflowService(db)
         previous_status = bug.status
@@ -87,20 +81,12 @@ def assign_bug(
             current_status=updated_bug.status,
             message=f"Bug successfully assigned to '{payload.assigned_to}'.",
         )
-
     except ValueError as exc:
-        # WorkflowService raises ValueError for invalid transitions
         logger.warning("Workflow transition rejected for bug %s: %s", bug_id, exc)
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail=str(exc),
-        )
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc))
     except Exception as exc:
         logger.error("Error assigning bug %s: %s", bug_id, exc, exc_info=True)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to assign bug.",
-        )
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to assign bug.")
 
 
 # ─────────────────────────────────────────────
@@ -114,7 +100,7 @@ def assign_bug(
     summary="Update bug status",
     description=(
         "Transitions the bug through the workflow: "
-        "**new → assigned → in_progress → resolved**. "
+        "**New → Assigned → In Progress → Resolved**. "
         "Invalid transitions are rejected with HTTP 409."
     ),
 )
@@ -123,14 +109,7 @@ def update_status(
     payload: UpdateStatusRequest,
     db: Session = Depends(get_db),
 ):
-    """
-    Update bug status:
-
-    - **status**: Target status (new | assigned | in_progress | resolved).
-    - **note**: Optional audit note recorded in bug history.
-    """
     bug = _get_bug_or_404(bug_id, db)
-
     try:
         workflow = WorkflowService(db)
         previous_status = bug.status
@@ -139,46 +118,35 @@ def update_status(
             new_status=payload.status,
             note=payload.note,
         )
-        logger.info(
-            "Bug %s status changed: %s → %s.",
-            bug_id, previous_status, updated_bug.status,
-        )
+        logger.info("Bug %s status changed: %s → %s.", bug_id, previous_status, updated_bug.status)
         return WorkflowResponse(
             bug_id=bug_id,
             previous_status=previous_status,
             current_status=updated_bug.status,
             message=f"Bug status updated to '{updated_bug.status}'.",
         )
-
     except ValueError as exc:
         logger.warning("Invalid status transition for bug %s: %s", bug_id, exc)
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail=str(exc),
-        )
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc))
     except Exception as exc:
         logger.error("Error updating status for bug %s: %s", bug_id, exc, exc_info=True)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to update bug status.",
-        )
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to update bug status.")
 
 
 # ─────────────────────────────────────────────
-# GET /bugs/{id}/history  — Audit trail (bonus)
+# GET /bugs/{id}/history  — Audit trail
 # ─────────────────────────────────────────────
 
 @router.get(
     "/{bug_id}/history",
     summary="Get bug history / audit trail",
-    description="Returns all workflow transitions and notes for a bug, ordered newest-first.",
+    description="Returns all workflow transitions and field changes for a bug, ordered newest-first.",
 )
 def get_bug_history(
     bug_id: str,
     db: Session = Depends(get_db),
 ):
     _get_bug_or_404(bug_id, db)
-
     try:
         workflow = WorkflowService(db)
         history = workflow.get_history(bug_id)
@@ -188,18 +156,17 @@ def get_bug_history(
             "history": [
                 {
                     "id": str(h.id),
+                    "field_changed": h.field_changed,
+                    "old_value": h.old_value,        # ← correct field name
+                    "new_value": h.new_value,         # ← correct field name
                     "changed_by": h.changed_by,
-                    "previous_status": h.previous_status,
-                    "new_status": h.new_status,
-                    "note": h.note,
-                    "changed_at": h.changed_at,
+                    "change_source": h.change_source,
+                    "notes": h.notes,                 # ← correct field name
+                    "changed_at": h.created_at,       # ← correct field name (created_at from TimestampMixin)
                 }
                 for h in history
             ],
         }
     except Exception as exc:
         logger.error("Error fetching history for bug %s: %s", bug_id, exc, exc_info=True)
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to retrieve bug history.",
-        )
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to retrieve bug history.")

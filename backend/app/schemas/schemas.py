@@ -19,6 +19,8 @@ class BugCreate(BaseModel):
     title: str = Field(..., min_length=3, max_length=255)
     description: str = Field(..., min_length=10)
     module: str = Field(..., max_length=100)
+    location: Optional[str] = Field(None, max_length=255)
+    environment: Optional[str] = Field("production", max_length=100)
     severity: BugSeverity = Field(default=BugSeverity.MEDIUM)
     frequency: int = Field(default=1, ge=1, le=10)
     impact: int = Field(default=1, ge=1, le=10)
@@ -43,6 +45,8 @@ class BugResponse(BaseModel):
     title: str
     description: str
     module: str
+    location: Optional[str] = None
+    environment: Optional[str] = None
     severity: str
     frequency: int
     impact: int
@@ -50,9 +54,11 @@ class BugResponse(BaseModel):
     bug_type: Optional[str] = None
     category: Optional[str] = None
     priority: Optional[str] = None
+    priority_score: Optional[float] = None
     status: str
     assigned_to: Optional[str] = None
     reported_by: Optional[str] = None
+    resolved_at: Optional[datetime] = None
     created_at: datetime
     updated_at: datetime
     class Config:
@@ -86,6 +92,7 @@ class FixSuggestionResponse(BaseModel):
     category: str
     problem_summary: str
     fix_description: str
+    fix_tags: Optional[str] = None
     confidence_score: float
     times_applied: int
     created_at: datetime
