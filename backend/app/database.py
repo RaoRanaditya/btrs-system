@@ -10,10 +10,13 @@ from app.config import get_settings
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
+connect_args = {}
+if settings.DATABASE_URL.startswith("sqlite"):
+    connect_args["check_same_thread"] = False
 
 engine = create_engine(
     settings.DATABASE_URL,
-    connect_args={"check_same_thread": False},  # SQLite only
+    connect_args=connect_args,
     echo=settings.DB_ECHO,
 )
 
@@ -57,7 +60,6 @@ def check_database_connection() -> bool:
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
-        logger.info("Database connection verified.")
         return True
     except Exception as exc:
         logger.error("Database connection FAILED: %s", exc)
@@ -65,10 +67,9 @@ def check_database_connection() -> bool:
 
 
 def create_tables() -> None:
-    from app.models.user import User          # noqa: F401
-    from app.models.bug import Bug            # noqa: F401
-    from app.models.bug_history import BugHistory  # noqa: F401
-    from app.models.fix_suggestion import FixSuggestion  # noqa: F401
-
+    from app.models.user import User
+    from app.models.bug import Bug
+    from app.models.bug_history import BugHistory
+    from app.models.fix_suggestion import FixSuggestion
     Base.metadata.create_all(bind=engine)
-    logger.info("All database tables created (or already exist).")
+    logger.info("All tables created.")

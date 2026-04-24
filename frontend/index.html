@@ -8,256 +8,246 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #1a1a24;
-    --surface3: #22222f;
-    --border: #2a2a3a;
-    --accent: #5b6af0;
-    --accent2: #8b5cf6;
-    --red: #ef4444;
-    --orange: #f97316;
-    --yellow: #eab308;
-    --green: #22c55e;
-    --cyan: #06b6d4;
-    --text: #e8e8f0;
-    --text2: #9090a8;
-    --text3: #5a5a70;
-    --mono: 'Space Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
-    --radius: 8px;
-    --radius-lg: 14px;
+    --bg:#0a0a0f;--surface:#111118;--surface2:#1a1a24;--surface3:#22222f;
+    --border:#2a2a3a;--accent:#5b6af0;--accent2:#8b5cf6;
+    --red:#ef4444;--orange:#f97316;--yellow:#eab308;--green:#22c55e;--cyan:#06b6d4;
+    --text:#e8e8f0;--text2:#9090a8;--text3:#5a5a70;
+    --mono:'Space Mono',monospace;--sans:'DM Sans',sans-serif;
+    --radius:8px;--radius-lg:14px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+  ::-webkit-scrollbar{width:6px;height:6px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 
-  .layout { display: flex; height: 100vh; }
+  .layout{display:flex;height:100vh;}
 
-  /* ── SIDEBAR ── */
-  .sidebar { width: 220px; min-width: 220px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
-  .sidebar-logo { padding: 24px 20px 20px; border-bottom: 1px solid var(--border); }
-  .sidebar-logo .logo-mark { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: -1px; }
-  .sidebar-logo .logo-sub { font-size: 10px; color: var(--text3); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-family: var(--mono); }
-  .sidebar-nav { padding: 16px 12px; flex: 1; }
-  .nav-section-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); font-family: var(--mono); padding: 0 8px; margin: 16px 0 6px; }
-  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: var(--radius); cursor: pointer; color: var(--text2); font-size: 13.5px; font-weight: 400; transition: all 0.15s; border: 1px solid transparent; margin-bottom: 2px; }
-  .nav-item:hover { background: var(--surface2); color: var(--text); }
-  .nav-item.active { background: rgba(91,106,240,0.12); color: var(--accent); border-color: rgba(91,106,240,0.2); }
-  .nav-item .nav-icon { font-size: 15px; width: 18px; text-align: center; }
-  .nav-item .nav-badge { margin-left: auto; background: var(--accent); color: #fff; font-size: 10px; font-family: var(--mono); padding: 1px 6px; border-radius: 20px; min-width: 20px; text-align: center; }
-  .sidebar-footer { padding: 16px 12px; border-top: 1px solid var(--border); }
-  .api-status { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text3); font-family: var(--mono); }
-  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
-  .status-dot.offline { background: var(--red); box-shadow: 0 0 6px var(--red); animation: none; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  /* SIDEBAR */
+  .sidebar{width:220px;min-width:220px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;}
+  .sidebar-logo{padding:24px 20px 20px;border-bottom:1px solid var(--border);}
+  .sidebar-logo .logo-mark{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--accent);letter-spacing:-1px;}
+  .sidebar-logo .logo-sub{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-top:2px;font-family:var(--mono);}
+  .sidebar-nav{padding:16px 12px;flex:1;}
+  .nav-section-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);padding:0 8px;margin:16px 0 6px;}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--radius);cursor:pointer;color:var(--text2);font-size:13.5px;transition:all 0.15s;border:1px solid transparent;margin-bottom:2px;}
+  .nav-item:hover{background:var(--surface2);color:var(--text);}
+  .nav-item.active{background:rgba(91,106,240,0.12);color:var(--accent);border-color:rgba(91,106,240,0.2);}
+  .nav-icon{font-size:15px;width:18px;text-align:center;}
+  .nav-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:20px;min-width:20px;text-align:center;}
+  .sidebar-footer{padding:16px 12px;border-top:1px solid var(--border);}
+  .api-status{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text3);font-family:var(--mono);}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite;}
+  .status-dot.offline{background:var(--red);box-shadow:0 0 6px var(--red);animation:none;}
+  .status-dot.checking{background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-  /* ── MAIN ── */
-  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; height: 58px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-  .topbar-title { font-family: var(--mono); font-size: 14px; color: var(--text2); }
-  .topbar-title span { color: var(--text); font-weight: 700; }
-  .topbar-actions { margin-left: auto; display: flex; gap: 8px; }
-  .content { flex: 1; overflow-y: auto; padding: 24px; }
+  /* MAIN */
+  .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:58px;display:flex;align-items:center;gap:16px;flex-shrink:0;}
+  .topbar-title{font-family:var(--mono);font-size:14px;color:var(--text2);}
+  .topbar-title span{color:var(--text);font-weight:700;}
+  .topbar-actions{margin-left:auto;display:flex;gap:8px;}
+  .content{flex:1;overflow-y:auto;padding:24px;}
 
-  /* ── VIEWS ── */
-  .view { display: none; }
-  .view.active { display: block; animation: fadeIn 0.2s ease; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+  /* VIEWS */
+  .view{display:none;}
+  .view.active{display:block;animation:fadeIn 0.2s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ── STATS ── */
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; position: relative; overflow: hidden; }
-  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-color, var(--accent)); }
-  .stat-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); font-family: var(--mono); margin-bottom: 8px; }
-  .stat-value { font-size: 28px; font-family: var(--mono); font-weight: 700; color: var(--text); line-height: 1; }
-  .stat-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
+  /* STATS */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;position:relative;overflow:hidden;}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent-color,var(--accent));}
+  .stat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);margin-bottom:8px;}
+  .stat-value{font-size:28px;font-family:var(--mono);font-weight:700;color:var(--text);line-height:1;}
+  .stat-sub{font-size:11px;color:var(--text3);margin-top:4px;}
 
-  /* ── ANALYTICS ── */
-  .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
-  .chart-title { font-family: var(--mono); font-size: 12px; color: var(--text2); margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
-  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
-  .bar-row { display: flex; align-items: center; gap: 10px; }
-  .bar-label { font-size: 11px; color: var(--text2); min-width: 90px; font-family: var(--mono); }
-  .bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-  .bar-count { font-size: 11px; color: var(--text3); font-family: var(--mono); min-width: 24px; text-align: right; }
+  /* ANALYTICS */
+  .analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+  .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;}
+  .chart-title{font-family:var(--mono);font-size:12px;color:var(--text2);margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;}
+  .bar-chart{display:flex;flex-direction:column;gap:10px;}
+  .bar-row{display:flex;align-items:center;gap:10px;}
+  .bar-label{font-size:11px;color:var(--text2);min-width:100px;font-family:var(--mono);}
+  .bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;transition:width 0.6s ease;}
+  .bar-count{font-size:11px;color:var(--text3);font-family:var(--mono);min-width:28px;text-align:right;}
 
-  /* ── RESOLUTION RATE ── */
-  .resolution-rate { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 24px; }
-  .rate-circle { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
-  .rate-circle svg { transform: rotate(-90deg); }
-  .rate-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--green); }
-  .rate-info .rate-title { font-family: var(--mono); font-size: 13px; color: var(--text); margin-bottom: 4px; }
-  .rate-info .rate-sub { font-size: 12px; color: var(--text3); }
+  /* RESOLUTION RING */
+  .resolution-rate{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px;display:flex;align-items:center;gap:24px;}
+  .rate-circle{position:relative;width:80px;height:80px;flex-shrink:0;}
+  .rate-circle svg{transform:rotate(-90deg);}
+  .rate-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:16px;font-weight:700;color:var(--green);}
+  .rate-info .rate-title{font-family:var(--mono);font-size:13px;color:var(--text);margin-bottom:4px;}
+  .rate-info .rate-sub{font-size:12px;color:var(--text3);}
 
-  /* ── FILTERS ── */
-  .filters-bar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
-  .filter-select, .filter-input { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 12.5px; font-family: var(--sans); padding: 7px 12px; outline: none; transition: border-color 0.15s; cursor: pointer; }
-  .filter-select:focus, .filter-input:focus { border-color: var(--accent); }
-  .filter-input { min-width: 200px; }
-  .filter-input::placeholder { color: var(--text3); }
+  /* FILTERS */
+  .filters-bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+  .filter-select,.filter-input{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:12.5px;font-family:var(--sans);padding:7px 12px;outline:none;transition:border-color 0.15s;cursor:pointer;}
+  .filter-select:focus,.filter-input:focus{border-color:var(--accent);}
+  .filter-input{min-width:200px;}
+  .filter-input::placeholder{color:var(--text3);}
 
-  /* ── TABLE ── */
-  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-  .table-header-row { display: flex; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--surface2); align-items: center; justify-content: space-between; }
-  .table-header-row span { font-size: 11px; color: var(--text3); font-family: var(--mono); }
-  table { width: 100%; border-collapse: collapse; }
-  thead th { text-align: left; padding: 11px 14px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); font-family: var(--mono); font-weight: 400; border-bottom: 1px solid var(--border); white-space: nowrap; }
-  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.1s; cursor: pointer; }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--surface2); }
-  tbody td { padding: 12px 14px; font-size: 13px; vertical-align: middle; }
-  .bug-title-cell { font-weight: 500; color: var(--text); max-width: 260px; }
-  .bug-title-cell .bug-id { font-family: var(--mono); font-size: 10px; color: var(--text3); display: block; margin-bottom: 2px; }
-  .bug-module { font-family: var(--mono); font-size: 11px; color: var(--cyan); background: rgba(6,182,212,0.1); padding: 2px 7px; border-radius: 4px; }
+  /* TABLE */
+  .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+  .table-header-row{display:flex;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface2);align-items:center;justify-content:space-between;}
+  .table-header-row span{font-size:11px;color:var(--text3);font-family:var(--mono);}
+  table{width:100%;border-collapse:collapse;}
+  thead th{text-align:left;padding:11px 14px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);font-weight:400;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.1s;cursor:pointer;}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:var(--surface2);}
+  tbody td{padding:12px 14px;font-size:13px;vertical-align:middle;}
+  .bug-title-cell{font-weight:500;color:var(--text);max-width:260px;}
+  .bug-id{font-family:var(--mono);font-size:10px;color:var(--text3);display:block;margin-bottom:2px;}
+  .bug-module{font-family:var(--mono);font-size:11px;color:var(--cyan);background:rgba(6,182,212,0.1);padding:2px 7px;border-radius:4px;}
 
-  /* ── BADGES ── */
-  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; font-family: var(--mono); white-space: nowrap; }
-  .sev-critical { background: rgba(239,68,68,0.15); color: var(--red); }
-  .sev-high { background: rgba(249,115,22,0.15); color: var(--orange); }
-  .sev-medium { background: rgba(234,179,8,0.15); color: var(--yellow); }
-  .sev-low { background: rgba(34,197,94,0.15); color: var(--green); }
-  .pri-high { background: rgba(239,68,68,0.15); color: var(--red); }
-  .pri-medium { background: rgba(234,179,8,0.15); color: var(--yellow); }
-  .pri-low { background: rgba(34,197,94,0.15); color: var(--green); }
-  .status-new { background: rgba(148,163,184,0.12); color: #94a3b8; }
-  .status-assigned { background: rgba(91,106,240,0.15); color: var(--accent); }
-  .status-in_progress { background: rgba(139,92,246,0.15); color: var(--accent2); }
-  .status-resolved { background: rgba(34,197,94,0.15); color: var(--green); }
-  .type-badge { background: rgba(249,115,22,0.1); color: var(--orange); }
+  /* BADGES */
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;font-family:var(--mono);white-space:nowrap;}
+  .sev-critical{background:rgba(239,68,68,0.15);color:var(--red);}
+  .sev-high{background:rgba(249,115,22,0.15);color:var(--orange);}
+  .sev-medium{background:rgba(234,179,8,0.15);color:var(--yellow);}
+  .sev-low{background:rgba(34,197,94,0.15);color:var(--green);}
+  .pri-high{background:rgba(239,68,68,0.15);color:var(--red);}
+  .pri-medium{background:rgba(234,179,8,0.15);color:var(--yellow);}
+  .pri-low{background:rgba(34,197,94,0.15);color:var(--green);}
+  .status-new{background:rgba(148,163,184,0.12);color:#94a3b8;}
+  .status-assigned{background:rgba(91,106,240,0.15);color:var(--accent);}
+  .status-in_progress{background:rgba(139,92,246,0.15);color:var(--accent2);}
+  .status-resolved{background:rgba(34,197,94,0.15);color:var(--green);}
+  .type-badge{background:rgba(249,115,22,0.1);color:var(--orange);}
 
-  /* ── EMPTY / LOADING ── */
-  .empty-state { text-align: center; padding: 60px 20px; color: var(--text3); }
-  .empty-state .empty-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.5; }
-  .empty-state p { font-size: 13px; }
-  .loading-row td { text-align: center; padding: 40px; }
-  .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  /* EMPTY / LOADING */
+  .empty-state{text-align:center;padding:60px 20px;color:var(--text3);}
+  .empty-state .empty-icon{font-size:40px;margin-bottom:12px;opacity:0.5;}
+  .empty-state p{font-size:13px;}
+  .loading-row td{text-align:center;padding:40px;}
+  .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block;}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-  /* ── BUTTONS ── */
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 12.5px; font-family: var(--sans); font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-  .btn:hover { border-color: var(--accent); color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .btn.primary:hover { background: #4a5ae0; border-color: #4a5ae0; color: #fff; }
-  .btn.danger { background: rgba(239,68,68,0.1); border-color: var(--red); color: var(--red); }
-  .btn.danger:hover { background: var(--red); color: #fff; }
-  .btn.sm { padding: 5px 10px; font-size: 11.5px; }
-  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:12.5px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+  .btn:hover{border-color:var(--accent);color:var(--accent);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.primary:hover{background:#4a5ae0;border-color:#4a5ae0;color:#fff;}
+  .btn.danger{background:rgba(239,68,68,0.1);border-color:var(--red);color:var(--red);}
+  .btn.danger:hover{background:var(--red);color:#fff;}
+  .btn.sm{padding:5px 10px;font-size:11.5px;}
+  .btn:disabled{opacity:0.4;cursor:not-allowed;}
 
-  /* ── MODAL ── */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); width: 600px; max-width: 95vw; max-height: 90vh; overflow-y: auto; transform: translateY(12px); transition: transform 0.2s; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
-  .modal-overlay.open .modal { transform: translateY(0); }
-  .modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .modal-title { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--text); }
-  .modal-close { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; color: var(--text3); font-size: 18px; background: none; border: none; transition: all 0.1s; }
-  .modal-close:hover { background: var(--surface2); color: var(--text); }
-  .modal-body { padding: 24px; }
-  .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.2s;}
+  .modal-overlay.open{opacity:1;pointer-events:all;}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);width:600px;max-width:95vw;max-height:90vh;overflow-y:auto;transform:translateY(12px);transition:transform 0.2s;box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .modal-title{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--text);}
+  .modal-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;color:var(--text3);font-size:18px;background:none;border:none;transition:all 0.1s;}
+  .modal-close:hover{background:var(--surface2);color:var(--text);}
+  .modal-body{padding:24px;}
+  .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;}
 
-  /* ── FORM ── */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1 / -1; }
-  .form-label { font-size: 11px; font-family: var(--mono); color: var(--text2); letter-spacing: 0.5px; }
-  .form-label span { color: var(--red); margin-left: 2px; }
-  .form-control { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 13px; font-family: var(--sans); padding: 9px 12px; outline: none; transition: border-color 0.15s; width: 100%; }
-  .form-control:focus { border-color: var(--accent); }
-  .form-control::placeholder { color: var(--text3); }
-  textarea.form-control { resize: vertical; min-height: 80px; }
-  .range-wrap { display: flex; align-items: center; gap: 10px; }
-  .range-wrap input[type=range] { flex: 1; accent-color: var(--accent); }
-  .range-val { font-family: var(--mono); font-size: 12px; color: var(--accent); min-width: 16px; text-align: center; }
-  .form-hint { font-size: 10.5px; color: var(--text3); margin-top: 2px; }
-  .form-section-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); font-family: var(--mono); grid-column: 1/-1; padding-top: 8px; border-top: 1px solid var(--border); margin-top: 4px; }
+  /* FORM */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{display:flex;flex-direction:column;gap:6px;}
+  .form-group.full{grid-column:1/-1;}
+  .form-label{font-size:11px;font-family:var(--mono);color:var(--text2);letter-spacing:0.5px;}
+  .form-label span{color:var(--red);margin-left:2px;}
+  .form-control{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:13px;font-family:var(--sans);padding:9px 12px;outline:none;transition:border-color 0.15s;width:100%;}
+  .form-control:focus{border-color:var(--accent);}
+  .form-control::placeholder{color:var(--text3);}
+  textarea.form-control{resize:vertical;min-height:80px;}
+  .range-wrap{display:flex;align-items:center;gap:10px;}
+  .range-wrap input[type=range]{flex:1;accent-color:var(--accent);}
+  .range-val{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:16px;text-align:center;}
+  .form-hint{font-size:10.5px;color:var(--text3);margin-top:2px;}
+  .form-section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);grid-column:1/-1;padding-top:8px;border-top:1px solid var(--border);margin-top:4px;}
 
-  /* ── DETAIL PANEL ── */
-  .detail-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 520px; max-width: 95vw; background: var(--surface); border-left: 1px solid var(--border); z-index: 50; transform: translateX(100%); transition: transform 0.25s ease; display: flex; flex-direction: column; box-shadow: -20px 0 60px rgba(0,0,0,0.4); }
-  .detail-panel.open { transform: translateX(0); }
-  .detail-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 49; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
-  .detail-overlay.open { opacity: 1; pointer-events: all; }
-  .detail-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
-  .detail-header-text { flex: 1; }
-  .detail-id { font-family: var(--mono); font-size: 10px; color: var(--text3); margin-bottom: 4px; }
-  .detail-title-text { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.4; }
-  .detail-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
-  .detail-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; }
-  .detail-section { margin-bottom: 24px; }
-  .detail-section-title { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); font-family: var(--mono); margin-bottom: 12px; }
-  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .detail-field { background: var(--surface2); border-radius: var(--radius); padding: 10px 12px; }
-  .detail-field-label { font-size: 9px; color: var(--text3); font-family: var(--mono); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-  .detail-field-value { font-size: 13px; color: var(--text); font-weight: 500; }
-  .detail-description { background: var(--surface2); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; color: var(--text2); line-height: 1.6; }
+  /* DETAIL PANEL */
+  .detail-panel{position:fixed;top:0;right:0;bottom:0;width:520px;max-width:95vw;background:var(--surface);border-left:1px solid var(--border);z-index:50;transform:translateX(100%);transition:transform 0.25s ease;display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,0.4);}
+  .detail-panel.open{transform:translateX(0);}
+  .detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:49;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+  .detail-overlay.open{opacity:1;pointer-events:all;}
+  .detail-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;}
+  .detail-header-text{flex:1;}
+  .detail-id{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:4px;}
+  .detail-title-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.4;}
+  .detail-body{flex:1;overflow-y:auto;padding:20px 24px;}
+  .detail-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;}
+  .detail-section{margin-bottom:24px;}
+  .detail-section-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);margin-bottom:12px;}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .detail-field{background:var(--surface2);border-radius:var(--radius);padding:10px 12px;}
+  .detail-field-label{font-size:9px;color:var(--text3);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+  .detail-field-value{font-size:13px;color:var(--text);font-weight:500;}
+  .detail-description{background:var(--surface2);border-radius:var(--radius);padding:12px 14px;font-size:13px;color:var(--text2);line-height:1.6;}
 
-  /* ── PRIORITY BREAKDOWN ── */
-  .priority-explain { background: rgba(91,106,240,0.06); border: 1px solid rgba(91,106,240,0.2); border-radius: var(--radius); padding: 10px 12px; margin-top: 8px; }
-  .priority-explain .pe-title { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-family: var(--mono); margin-bottom: 8px; }
-  .priority-explain .pe-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-  .priority-explain .pe-label { font-size: 10px; color: var(--text3); font-family: var(--mono); width: 110px; }
-  .priority-explain .pe-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-  .priority-explain .pe-fill { height: 100%; background: var(--accent); border-radius: 2px; }
-  .priority-explain .pe-val { font-size: 10px; color: var(--text2); font-family: var(--mono); min-width: 40px; text-align: right; }
+  /* PRIORITY BREAKDOWN */
+  .priority-explain{background:rgba(91,106,240,0.06);border:1px solid rgba(91,106,240,0.2);border-radius:var(--radius);padding:10px 12px;margin-top:8px;}
+  .pe-title{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-family:var(--mono);margin-bottom:8px;}
+  .pe-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+  .pe-label{font-size:10px;color:var(--text3);font-family:var(--mono);width:110px;}
+  .pe-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+  .pe-fill{height:100%;background:var(--accent);border-radius:2px;}
+  .pe-val{font-size:10px;color:var(--text2);font-family:var(--mono);min-width:40px;text-align:right;}
 
-  /* ── SUGGESTIONS ── */
-  .suggestion-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; border-left: 3px solid var(--accent2); }
-  .suggestion-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .suggestion-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .suggestion-confidence { font-family: var(--mono); font-size: 11px; color: var(--green); }
-  .suggestion-summary { font-size: 12.5px; color: var(--text); font-weight: 500; margin-bottom: 6px; }
-  .suggestion-fix { font-size: 12px; color: var(--text2); line-height: 1.5; }
-  .no-suggestions { background: var(--surface2); border-radius: var(--radius); padding: 16px; text-align: center; }
-  .no-suggestions p { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
-  .no-suggestions small { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+  /* SUGGESTIONS */
+  .suggestion-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;border-left:3px solid var(--accent2);}
+  .suggestion-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .suggestion-tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .suggestion-confidence{font-family:var(--mono);font-size:11px;color:var(--green);}
+  .suggestion-summary{font-size:12.5px;color:var(--text);font-weight:500;margin-bottom:6px;}
+  .suggestion-fix{font-size:12px;color:var(--text2);line-height:1.5;}
+  .no-suggestions{background:var(--surface2);border-radius:var(--radius);padding:16px;text-align:center;}
+  .no-suggestions p{font-size:12px;color:var(--text3);margin-bottom:6px;}
+  .no-suggestions small{font-size:11px;color:var(--text3);font-family:var(--mono);}
 
-  /* ── HISTORY ── */
-  .history-list { display: flex; flex-direction: column; gap: 8px; }
-  .history-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; background: var(--surface2); border-radius: var(--radius); border-left: 2px solid var(--border); }
-  .history-item.status-change { border-left-color: var(--accent); }
-  .history-icon { font-size: 14px; margin-top: 1px; }
-  .history-content { flex: 1; }
-  .history-main { font-size: 12.5px; color: var(--text); }
-  .history-main strong { color: var(--accent); }
-  .history-time { font-size: 10px; color: var(--text3); font-family: var(--mono); margin-top: 2px; }
-  .history-note { font-size: 11px; color: var(--text3); margin-top: 4px; font-style: italic; }
+  /* HISTORY */
+  .history-list{display:flex;flex-direction:column;gap:8px;}
+  .history-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface2);border-radius:var(--radius);border-left:2px solid var(--border);}
+  .history-item.status-change{border-left-color:var(--accent);}
+  .history-icon{font-size:14px;margin-top:1px;}
+  .history-content{flex:1;}
+  .history-main{font-size:12.5px;color:var(--text);}
+  .history-main strong{color:var(--accent);}
+  .history-time{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;}
+  .history-note{font-size:11px;color:var(--text3);margin-top:4px;font-style:italic;}
 
-  /* ── TRANSITION INFO ── */
-  .transition-info { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 12px; font-size: 12px; color: var(--text2); }
-  .transition-info .arrow { color: var(--accent); font-weight: bold; }
+  /* TRANSITION INFO */
+  .transition-info{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--text2);}
+  .arrow{color:var(--accent);font-weight:bold;}
 
-  /* ── SECTION HEADER ── */
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-  .section-title { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text); }
-  .section-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  /* SECTION HEADER */
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .section-title{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--text);}
+  .section-sub{font-size:12px;color:var(--text3);margin-top:2px;}
 
-  /* ── TOAST ── */
-  .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
-  .toast { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; display: flex; align-items: center; gap: 10px; min-width: 280px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); animation: slideIn 0.2s ease; }
-  .toast.success { border-left: 3px solid var(--green); }
-  .toast.error { border-left: 3px solid var(--red); }
-  .toast.info { border-left: 3px solid var(--accent); }
-  @keyframes slideIn { from{transform:translateX(20px);opacity:0} to{transform:translateX(0);opacity:1} }
+  /* ERROR BANNER */
+  .error-banner{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:13px;color:var(--red);display:none;}
+  .error-banner.visible{display:flex;align-items:center;gap:10px;}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .sidebar { width: 60px; min-width: 60px; }
-    .sidebar-logo .logo-sub, .nav-item span:not(.nav-icon), .nav-item .nav-badge, .sidebar-footer .api-status span { display: none; }
-    .nav-item { justify-content: center; padding: 10px; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .form-grid { grid-column: 1fr; }
-    .analytics-grid { grid-template-columns: 1fr; }
+  /* TOAST */
+  .toast-container{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:8px;}
+  .toast{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:13px;display:flex;align-items:center;gap:10px;min-width:280px;box-shadow:0 8px 24px rgba(0,0,0,0.3);animation:slideIn 0.2s ease;}
+  .toast.success{border-left:3px solid var(--green);}
+  .toast.error{border-left:3px solid var(--red);}
+  .toast.info{border-left:3px solid var(--accent);}
+  @keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+  @media(max-width:900px){
+    .sidebar{width:60px;min-width:60px;}
+    .sidebar-logo .logo-sub,.nav-item span:not(.nav-icon),.nav-badge,.api-status span{display:none;}
+    .nav-item{justify-content:center;padding:10px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .analytics-grid{grid-template-columns:1fr;}
   }
-  @media (max-width: 600px) {
-    .content { padding: 14px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-    table { font-size: 12px; }
-    thead th:nth-child(n+4) { display: none; }
-    td:nth-child(n+4) { display: none; }
+  @media(max-width:600px){
+    .content{padding:14px;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    table{font-size:12px;}
+    thead th:nth-child(n+4){display:none;}
+    td:nth-child(n+4){display:none;}
   }
 </style>
 </head>
@@ -272,35 +262,35 @@
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Main</div>
-      <div class="nav-item active" data-view="dashboard" onclick="switchView('dashboard',this)">
+      <div class="nav-item active" onclick="switchView('dashboard',this)">
         <span class="nav-icon">◈</span><span>Dashboard</span>
       </div>
-      <div class="nav-item" data-view="bugs" onclick="switchView('bugs',this)">
+      <div class="nav-item" onclick="switchView('bugs',this)">
         <span class="nav-icon">⬡</span><span>All Bugs</span>
         <span class="nav-badge" id="nav-bug-count">0</span>
       </div>
-      <div class="nav-item" data-view="analytics" onclick="switchView('analytics',this)">
+      <div class="nav-item" onclick="switchView('analytics',this)">
         <span class="nav-icon">▦</span><span>Analytics</span>
       </div>
       <div class="nav-section-label">Actions</div>
       <div class="nav-item" onclick="openCreateModal()">
         <span class="nav-icon">+</span><span>New Bug</span>
       </div>
-      <div class="nav-section-label">Filters</div>
-      <div class="nav-item" onclick="quickFilter('status','New');switchView('bugs',document.querySelector('[data-view=bugs]'))">
+      <div class="nav-section-label">Quick Filters</div>
+      <div class="nav-item" onclick="quickFilter('status','New');switchView('bugs',document.querySelectorAll('.nav-item')[1])">
         <span class="nav-icon">◦</span><span>New</span>
       </div>
-      <div class="nav-item" onclick="quickFilter('status','In Progress');switchView('bugs',document.querySelector('[data-view=bugs]'))">
+      <div class="nav-item" onclick="quickFilter('status','In Progress');switchView('bugs',document.querySelectorAll('.nav-item')[1])">
         <span class="nav-icon">◉</span><span>In Progress</span>
       </div>
-      <div class="nav-item" onclick="quickFilter('priority','High');switchView('bugs',document.querySelector('[data-view=bugs]'))">
+      <div class="nav-item" onclick="quickFilter('priority','High');switchView('bugs',document.querySelectorAll('.nav-item')[1])">
         <span class="nav-icon">▲</span><span>High Priority</span>
       </div>
     </nav>
     <div class="sidebar-footer">
       <div class="api-status">
-        <div class="status-dot" id="api-dot"></div>
-        <span id="api-status-text">Connecting...</span>
+        <div class="status-dot checking" id="api-dot"></div>
+        <span id="api-status-text">Connecting…</span>
       </div>
     </div>
   </aside>
@@ -314,10 +304,15 @@
         <button class="btn primary sm" onclick="openCreateModal()">+ New Bug</button>
       </div>
     </div>
-
     <div class="content">
 
-      <!-- DASHBOARD VIEW -->
+      <!-- API ERROR BANNER -->
+      <div class="error-banner" id="api-error-banner">
+        <span>⚠</span>
+        <span id="api-error-msg">Cannot reach backend. Make sure uvicorn is running on port 8000.</span>
+      </div>
+
+      <!-- DASHBOARD -->
       <div class="view active" id="view-dashboard">
         <div class="stats-grid">
           <div class="stat-card" style="--accent-color:#94a3b8">
@@ -341,14 +336,13 @@
             <div class="stat-sub">Fixed bugs</div>
           </div>
         </div>
-
         <div class="section-header">
           <div><div class="section-title">Recent Bugs</div><div class="section-sub">Latest 10 reported issues</div></div>
-          <button class="btn sm" onclick="switchView('bugs',document.querySelector('[data-view=bugs]'))">View all →</button>
+          <button class="btn sm" onclick="switchView('bugs',document.querySelectorAll('.nav-item')[1])">View all →</button>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Bug</th><th>Module</th><th>Type (Auto)</th><th>Severity</th><th>Priority</th><th>Status</th></tr></thead>
+            <thead><tr><th>Bug</th><th>Module</th><th>Type (Auto §6.2)</th><th>Severity</th><th>Priority (§6.3)</th><th>Status</th></tr></thead>
             <tbody id="dashboard-bug-tbody"><tr class="loading-row"><td colspan="6"><div class="spinner"></div></td></tr></tbody>
           </table>
         </div>
@@ -357,11 +351,11 @@
       <!-- BUGS VIEW -->
       <div class="view" id="view-bugs">
         <div class="section-header">
-          <div><div class="section-title">Bug Tracker</div><div class="section-sub" id="bugs-count-label">Loading...</div></div>
+          <div><div class="section-title">Bug Tracker</div><div class="section-sub" id="bugs-count-label">Loading…</div></div>
           <button class="btn primary" onclick="openCreateModal()">+ New Bug</button>
         </div>
         <div class="filters-bar">
-          <input type="text" class="filter-input" id="search-input" placeholder="🔍  Search bugs..." oninput="applyFilters()">
+          <input type="text" class="filter-input" id="search-input" placeholder="🔍  Search bugs…" oninput="applyFilters()">
           <select class="filter-select" id="filter-status" onchange="applyFilters()">
             <option value="">All Status</option>
             <option>New</option><option>Assigned</option><option>In Progress</option><option>Resolved</option>
@@ -386,23 +380,21 @@
         <div class="table-wrap">
           <div class="table-header-row">
             <span id="filtered-count">All bugs</span>
-            <span>Click row to inspect</span>
+            <span>Click row to inspect · Paper §6.5 FSM enforced</span>
           </div>
           <table>
-            <thead><tr><th>Bug</th><th>Module</th><th>Type (Auto)</th><th>Category</th><th>Severity</th><th>Priority</th><th>Status</th><th>Actions</th></tr></thead>
+            <thead><tr><th>Bug</th><th>Module</th><th>Type</th><th>Category</th><th>Severity</th><th>Priority</th><th>Status</th><th>Actions</th></tr></thead>
             <tbody id="bugs-tbody"><tr class="loading-row"><td colspan="8"><div class="spinner"></div></td></tr></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ANALYTICS VIEW — Paper section 9: Results & Dashboard -->
+      <!-- ANALYTICS VIEW — Paper §9 -->
       <div class="view" id="view-analytics">
         <div class="section-header">
-          <div><div class="section-title">Analytics &amp; Reports</div><div class="section-sub">Rule-based insights — transparent, no black boxes</div></div>
+          <div><div class="section-title">Analytics &amp; Reports</div><div class="section-sub">Rule-based insights — transparent, no black boxes (Paper §9)</div></div>
           <button class="btn sm" onclick="loadAnalytics()">⟳ Refresh</button>
         </div>
-
-        <!-- Resolution Rate — Paper section 9.1 -->
         <div class="resolution-rate">
           <div class="rate-circle">
             <svg width="80" height="80" viewBox="0 0 80 80">
@@ -414,62 +406,45 @@
           </div>
           <div class="rate-info">
             <div class="rate-title">Resolution Rate</div>
-            <div class="rate-sub">Percentage of bugs successfully resolved</div>
+            <div class="rate-sub">Percentage of bugs successfully resolved — Paper §9.1</div>
           </div>
         </div>
-
         <div class="analytics-grid">
-          <div class="chart-card">
-            <div class="chart-title">By Status</div>
-            <div class="bar-chart" id="chart-status"></div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-title">By Priority</div>
-            <div class="bar-chart" id="chart-priority"></div>
-          </div>
-          <!-- Paper section 6.2: auto-classification categories -->
-          <div class="chart-card">
-            <div class="chart-title">By Category (Auto-Classified)</div>
-            <div class="bar-chart" id="chart-category"></div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-title">By Severity</div>
-            <div class="bar-chart" id="chart-severity"></div>
-          </div>
+          <div class="chart-card"><div class="chart-title">By Status</div><div class="bar-chart" id="chart-status"></div></div>
+          <div class="chart-card"><div class="chart-title">By Priority (§6.3 Scoring)</div><div class="bar-chart" id="chart-priority"></div></div>
+          <div class="chart-card"><div class="chart-title">By Category (§6.2 Auto-Classified)</div><div class="bar-chart" id="chart-category"></div></div>
+          <div class="chart-card"><div class="chart-title">By Severity</div><div class="bar-chart" id="chart-severity"></div></div>
         </div>
-
-        <!-- Paper section 6.2: bug_type breakdown -->
         <div class="chart-card" style="margin-bottom:16px">
-          <div class="chart-title">By Bug Type (Rule-Based Classification)</div>
+          <div class="chart-title">By Bug Type — Rule-Based Classification (§6.2)</div>
           <div class="bar-chart" id="chart-bugtype"></div>
         </div>
-
         <div class="chart-card" style="margin-bottom:24px">
           <div class="chart-title">Top Modules by Bug Count</div>
           <div class="bar-chart" id="chart-modules"></div>
         </div>
       </div>
 
-    </div><!-- /content -->
-  </div><!-- /main -->
-</div><!-- /layout -->
+    </div>
+  </div>
+</div>
 
-<!-- ── CREATE MODAL ── -->
+<!-- CREATE MODAL -->
 <div class="modal-overlay" id="bug-modal">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">New Bug Report</div>
+      <div class="modal-title">New Bug Report — Paper §6.1</div>
       <button class="modal-close" onclick="closeModal('bug-modal')">✕</button>
     </div>
     <div class="modal-body">
       <div class="form-grid">
         <div class="form-group full">
           <label class="form-label">Title <span>*</span></label>
-          <input id="f-title" type="text" class="form-control" placeholder="Short, descriptive bug title">
+          <input id="f-title" type="text" class="form-control" placeholder="Short, descriptive bug title (≥3 chars)">
         </div>
         <div class="form-group full">
           <label class="form-label">Description <span>*</span></label>
-          <textarea id="f-description" class="form-control" placeholder="Describe the bug — what happened, what was expected, steps to reproduce..."></textarea>
+          <textarea id="f-description" class="form-control" placeholder="What happened? What was expected? Steps to reproduce…"></textarea>
         </div>
         <div class="form-group">
           <label class="form-label">Module <span>*</span></label>
@@ -477,8 +452,8 @@
         </div>
         <div class="form-group">
           <label class="form-label">Location</label>
-          <input id="f-location" type="text" class="form-control" placeholder="File path, URL, or screen name">
-          <div class="form-hint">Paper section 6.1: fault location field</div>
+          <input id="f-location" type="text" class="form-control" placeholder="File path, URL, or screen">
+          <div class="form-hint">§6.1 — fault location field</div>
         </div>
         <div class="form-group">
           <label class="form-label">Environment</label>
@@ -502,11 +477,9 @@
           <label class="form-label">Reported By</label>
           <input id="f-reported-by" type="text" class="form-control" placeholder="Name or email">
         </div>
-
-        <!-- Paper section 6.3: Priority Scoring Factors -->
-        <div class="form-section-label">Priority Scoring Factors (Paper §6.3)</div>
+        <div class="form-section-label">Priority Scoring Factors — Paper §6.3 (weighted formula)</div>
         <div class="form-group">
-          <label class="form-label">Frequency <span style="color:var(--text3)">(1–10)</span></label>
+          <label class="form-label">Frequency <span style="color:var(--text3)">(1–10) · weight 20%</span></label>
           <div class="range-wrap">
             <input type="range" id="f-frequency" min="1" max="10" value="1" oninput="document.getElementById('freq-val').textContent=this.value">
             <span class="range-val" id="freq-val">1</span>
@@ -514,7 +487,7 @@
           <div class="form-hint">How often does this occur?</div>
         </div>
         <div class="form-group">
-          <label class="form-label">Impact <span style="color:var(--text3)">(1–10)</span></label>
+          <label class="form-label">Impact <span style="color:var(--text3)">(1–10) · weight 30%</span></label>
           <div class="range-wrap">
             <input type="range" id="f-impact" min="1" max="10" value="1" oninput="document.getElementById('imp-val').textContent=this.value">
             <span class="range-val" id="imp-val">1</span>
@@ -522,17 +495,16 @@
           <div class="form-hint">Business / user impact</div>
         </div>
         <div class="form-group">
-          <label class="form-label">Reproducibility <span style="color:var(--text3)">(1–10)</span></label>
+          <label class="form-label">Reproducibility <span style="color:var(--text3)">(1–10) · weight 10%</span></label>
           <div class="range-wrap">
             <input type="range" id="f-reproducibility" min="1" max="10" value="1" oninput="document.getElementById('rep-val').textContent=this.value">
             <span class="range-val" id="rep-val">1</span>
           </div>
-          <div class="form-hint">How easily can you repro?</div>
+          <div class="form-hint">How easily can you reproduce?</div>
         </div>
-
         <div class="form-group full" style="background:rgba(91,106,240,0.05);border:1px solid rgba(91,106,240,0.15);border-radius:8px;padding:10px 12px;">
-          <div style="font-size:10px;color:var(--accent);font-family:var(--mono);margin-bottom:4px">AUTO-CLASSIFICATION (Rule Engine §6.2)</div>
-          <div style="font-size:11px;color:var(--text3)">Bug type, category, and priority will be automatically determined by the rule engine based on your title and description. No manual selection needed — fully transparent, no black boxes.</div>
+          <div style="font-size:10px;color:var(--accent);font-family:var(--mono);margin-bottom:4px">AUTO-CLASSIFICATION — Rule Engine (Paper §6.2)</div>
+          <div style="font-size:11px;color:var(--text3)">Bug type, category, and priority will be determined automatically by keyword rules applied to your title and description. No manual selection needed — fully transparent, no black boxes (Paper §9.2).</div>
         </div>
       </div>
     </div>
@@ -543,22 +515,22 @@
   </div>
 </div>
 
-<!-- ── ASSIGN MODAL ── -->
+<!-- ASSIGN MODAL -->
 <div class="modal-overlay" id="assign-modal">
   <div class="modal" style="width:420px">
     <div class="modal-header">
-      <div class="modal-title">Assign Bug</div>
+      <div class="modal-title">Assign Bug — §6.5 FSM</div>
       <button class="modal-close" onclick="closeModal('assign-modal')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="transition-info">Assigning transitions status: <span class="arrow">New → Assigned</span></div>
+      <div class="transition-info">Status transition: <span class="arrow">New → Assigned</span></div>
       <div class="form-group">
         <label class="form-label">Assign To <span>*</span></label>
         <input id="assign-to" type="text" class="form-control" placeholder="Username or email">
       </div>
       <div class="form-group" style="margin-top:12px">
-        <label class="form-label">Note (optional)</label>
-        <textarea id="assign-note" class="form-control" style="min-height:60px" placeholder="Add a note..."></textarea>
+        <label class="form-label">Note (logged to audit trail)</label>
+        <textarea id="assign-note" class="form-control" style="min-height:60px" placeholder="Optional note…"></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -568,11 +540,11 @@
   </div>
 </div>
 
-<!-- ── STATUS MODAL ── -->
+<!-- STATUS MODAL -->
 <div class="modal-overlay" id="status-modal">
   <div class="modal" style="width:420px">
     <div class="modal-header">
-      <div class="modal-title">Update Status</div>
+      <div class="modal-title">Update Status — §6.5 FSM</div>
       <button class="modal-close" onclick="closeModal('status-modal')">✕</button>
     </div>
     <div class="modal-body">
@@ -582,8 +554,8 @@
         <select id="new-status" class="form-control"></select>
       </div>
       <div class="form-group" style="margin-top:12px">
-        <label class="form-label">Note (optional)</label>
-        <textarea id="status-note" class="form-control" style="min-height:60px" placeholder="Audit note..."></textarea>
+        <label class="form-label">Note (logged to audit trail §6.5)</label>
+        <textarea id="status-note" class="form-control" style="min-height:60px" placeholder="Audit note…"></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -593,7 +565,7 @@
   </div>
 </div>
 
-<!-- ── DETAIL PANEL ── -->
+<!-- DETAIL PANEL -->
 <div class="detail-overlay" id="detail-overlay" onclick="closeDetail()"></div>
 <div class="detail-panel" id="detail-panel">
   <div class="detail-header">
@@ -610,34 +582,54 @@
 <div class="toast-container" id="toasts"></div>
 
 <script>
+// ── CONFIG ──────────────────────────────────────────────────────────────────
 const API = 'http://localhost:8000/api/v1';
+// Health check every 60s (was causing log spam at ~1s before)
+const HEALTH_INTERVAL_MS = 60_000;
+
+// ── STATE ───────────────────────────────────────────────────────────────────
 let allBugs = [];
 let currentBug = null;
-let activeBugIdForAction = null;
+let activeBugId = null;
+let apiOnline = false;
 
-// ── API ──
+// ── API ──────────────────────────────────────────────────────────────────────
 async function apiFetch(path, options = {}) {
-  const res = await fetch(API + path, { headers: { 'Content-Type': 'application/json' }, ...options });
+  const res = await fetch(API + path, {
+    headers: { 'Content-Type': 'application/json' },
+    ...options,
+  });
   const data = await res.json();
   if (!res.ok) throw new Error(data.detail || data.message || `HTTP ${res.status}`);
   return data;
 }
 
-// ── HEALTH ──
+// ── HEALTH ───────────────────────────────────────────────────────────────────
 async function checkHealth() {
+  const dot = document.getElementById('api-dot');
+  const txt = document.getElementById('api-status-text');
+  const banner = document.getElementById('api-error-banner');
   try {
     const res = await fetch('http://localhost:8000/health');
     if (res.ok) {
-      document.getElementById('api-dot').className = 'status-dot';
-      document.getElementById('api-status-text').textContent = 'API Online';
-    } else throw new Error();
-  } catch {
-    document.getElementById('api-dot').className = 'status-dot offline';
-    document.getElementById('api-status-text').textContent = 'API Offline';
+      dot.className = 'status-dot';
+      txt.textContent = 'API Online';
+      banner.classList.remove('visible');
+      apiOnline = true;
+    } else {
+      throw new Error(`HTTP ${res.status}`);
+    }
+  } catch (e) {
+    dot.className = 'status-dot offline';
+    txt.textContent = 'API Offline';
+    banner.classList.add('visible');
+    document.getElementById('api-error-msg').textContent =
+      'Cannot reach backend. Run: uvicorn app.main:app --reload (port 8000)';
+    apiOnline = false;
   }
 }
 
-// ── NAVIGATION ──
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
 function switchView(viewId, el) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -649,7 +641,7 @@ function switchView(viewId, el) {
   if (viewId === 'analytics') loadAnalytics();
 }
 
-// ── DATA ──
+// ── DATA ─────────────────────────────────────────────────────────────────────
 async function loadBugs() {
   try {
     const data = await apiFetch('/bugs/?limit=200');
@@ -657,12 +649,18 @@ async function loadBugs() {
     document.getElementById('nav-bug-count').textContent = data.total || 0;
     renderDashboard();
     renderBugsTable(allBugs);
-  } catch (e) { toast('Failed to load bugs: ' + e.message, 'error'); }
+  } catch (e) {
+    toast('Failed to load bugs: ' + e.message, 'error');
+  }
 }
 
-async function refreshData() { await loadBugs(); toast('Data refreshed', 'info'); }
+async function refreshData() {
+  await checkHealth();
+  await loadBugs();
+  toast('Data refreshed', 'info');
+}
 
-// ── DASHBOARD ──
+// ── DASHBOARD ────────────────────────────────────────────────────────────────
 function renderDashboard() {
   document.getElementById('stat-total').textContent = allBugs.length;
   document.getElementById('stat-high').textContent = allBugs.filter(b => b.priority === 'High').length;
@@ -679,14 +677,14 @@ function renderDashboard() {
     <tr onclick="openDetail('${b.id}')">
       <td class="bug-title-cell"><span class="bug-id">#${b.id.slice(0,8)}</span>${esc(b.title)}</td>
       <td><span class="bug-module">${esc(b.module)}</span></td>
-      <td><span class="badge type-badge">${esc((b.bug_type||'—').replace('_',' '))}</span></td>
+      <td><span class="badge type-badge">${esc((b.bug_type||'—').replace(/_/g,' '))}</span></td>
       <td>${sevBadge(b.severity)}</td>
       <td>${priBadge(b.priority)}</td>
       <td>${statusBadge(b.status)}</td>
     </tr>`).join('');
 }
 
-// ── BUGS TABLE ──
+// ── BUGS TABLE ───────────────────────────────────────────────────────────────
 function renderBugsTable(bugs) {
   document.getElementById('bugs-count-label').textContent = `${bugs.length} bug${bugs.length !== 1 ? 's' : ''} found`;
   document.getElementById('filtered-count').textContent = `${bugs.length} bug${bugs.length !== 1 ? 's' : ''}`;
@@ -699,7 +697,7 @@ function renderBugsTable(bugs) {
     <tr onclick="openDetail('${b.id}')">
       <td class="bug-title-cell"><span class="bug-id">#${b.id.slice(0,8)}</span>${esc(b.title)}</td>
       <td><span class="bug-module">${esc(b.module)}</span></td>
-      <td><span class="badge type-badge">${esc((b.bug_type||'—').replace('_',' '))}</span></td>
+      <td><span class="badge type-badge">${esc((b.bug_type||'—').replace(/_/g,' '))}</span></td>
       <td><span class="badge" style="background:rgba(6,182,212,0.1);color:var(--cyan)">${esc(b.category||'—')}</span></td>
       <td>${sevBadge(b.severity)}</td>
       <td>${priBadge(b.priority)}</td>
@@ -713,32 +711,35 @@ function renderBugsTable(bugs) {
     </tr>`).join('');
 }
 
-// ── ANALYTICS ──
+// ── ANALYTICS ────────────────────────────────────────────────────────────────
 async function loadAnalytics() {
   try {
     const data = await apiFetch('/analytics/summary');
     renderAnalytics(data);
-  } catch (e) { toast('Analytics load failed: ' + e.message, 'error'); }
+  } catch (e) {
+    toast('Analytics load failed: ' + e.message, 'error');
+  }
 }
 
 const CHART_COLORS = {
   'New':'#94a3b8','Assigned':'#5b6af0','In Progress':'#8b5cf6','Resolved':'#22c55e',
   'High':'#ef4444','Medium':'#eab308','Low':'#22c55e',
-  'structural':'#f97316','functional':'#5b6af0','data/storage':'#06b6d4','display':'#8b5cf6','connectivity':'#22c55e','uncategorized':'#5a5a70',
+  'structural':'#f97316','functional':'#5b6af0','data/storage':'#06b6d4',
+  'display':'#8b5cf6','connectivity':'#22c55e','uncategorized':'#5a5a70',
   'critical':'#ef4444','high':'#f97316','medium':'#eab308','low':'#22c55e',
-  'construction':'#f97316','crash':'#ef4444','data_flow':'#06b6d4','display_type':'#8b5cf6','connectivity_type':'#22c55e','unknown':'#5a5a70',
+  'construction':'#f97316','crash':'#ef4444','data_flow':'#06b6d4','unknown':'#5a5a70',
 };
 
-function renderBarChart(containerId, data) {
-  const container = document.getElementById(containerId);
+function renderBarChart(id, data) {
+  const el = document.getElementById(id);
   if (!data || !Object.keys(data).length) {
-    container.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:20px">No data yet</div>';
+    el.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:20px">No data yet</div>';
     return;
   }
   const max = Math.max(...Object.values(data));
-  container.innerHTML = Object.entries(data).sort((a,b)=>b[1]-a[1]).map(([label, count]) => {
+  el.innerHTML = Object.entries(data).sort((a,b)=>b[1]-a[1]).map(([label, count]) => {
     const pct = max > 0 ? (count / max * 100) : 0;
-    const color = CHART_COLORS[label] || CHART_COLORS[label.toLowerCase()] || '#5b6af0';
+    const color = CHART_COLORS[label] || '#5b6af0';
     return `<div class="bar-row">
       <div class="bar-label">${esc(label)}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div>
@@ -750,42 +751,41 @@ function renderBarChart(containerId, data) {
 function renderAnalytics(data) {
   const rate = data.resolution_rate || 0;
   document.getElementById('rate-pct').textContent = rate + '%';
-  const circumference = 213.6;
-  document.getElementById('rate-circle-fill').style.strokeDashoffset = circumference - (rate / 100 * circumference);
-
+  const circ = 213.6;
+  document.getElementById('rate-circle-fill').style.strokeDashoffset = circ - (rate / 100 * circ);
   renderBarChart('chart-status', data.by_status);
   renderBarChart('chart-priority', data.by_priority);
   renderBarChart('chart-category', data.by_category);
   renderBarChart('chart-severity', data.by_severity);
   renderBarChart('chart-bugtype', data.by_bug_type);
-
-  const modContainer = document.getElementById('chart-modules');
+  const modEl = document.getElementById('chart-modules');
   if (data.top_modules && data.top_modules.length) {
-    const maxMod = Math.max(...data.top_modules.map(m => m.count));
-    modContainer.innerHTML = data.top_modules.map(m => `
-      <div class="bar-row">
+    const maxM = Math.max(...data.top_modules.map(m => m.count));
+    modEl.innerHTML = data.top_modules.map(m =>
+      `<div class="bar-row">
         <div class="bar-label">${esc(m.module)}</div>
-        <div class="bar-track"><div class="bar-fill" style="width:${maxMod > 0 ? m.count/maxMod*100 : 0}%;background:var(--accent)"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${maxM>0?m.count/maxM*100:0}%;background:var(--accent)"></div></div>
         <div class="bar-count">${m.count}</div>
-      </div>`).join('');
+       </div>`).join('');
   } else {
-    modContainer.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:20px">No data yet</div>';
+    modEl.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:20px">No data yet</div>';
   }
 }
 
-// ── FILTERS ──
+// ── FILTERS ──────────────────────────────────────────────────────────────────
 function applyFilters() {
   const search = document.getElementById('search-input').value.toLowerCase();
-  const status = document.getElementById('filter-status').value;
-  const priority = document.getElementById('filter-priority').value;
-  const severity = document.getElementById('filter-severity').value;
-  const category = document.getElementById('filter-category').value;
+  const s = document.getElementById('filter-status').value;
+  const p = document.getElementById('filter-priority').value;
+  const sev = document.getElementById('filter-severity').value;
+  const cat = document.getElementById('filter-category').value;
   const filtered = allBugs.filter(b => {
-    if (search && !b.title.toLowerCase().includes(search) && !b.module.toLowerCase().includes(search) && !b.id.includes(search)) return false;
-    if (status && b.status !== status) return false;
-    if (priority && b.priority !== priority) return false;
-    if (severity && b.severity !== severity) return false;
-    if (category && b.category !== category) return false;
+    if (search && !b.title.toLowerCase().includes(search) &&
+        !b.module.toLowerCase().includes(search) && !b.id.includes(search)) return false;
+    if (s && b.status !== s) return false;
+    if (p && b.priority !== p) return false;
+    if (sev && b.severity !== sev) return false;
+    if (cat && b.category !== cat) return false;
     return true;
   });
   renderBugsTable(filtered);
@@ -799,16 +799,22 @@ function quickFilter(field, value) {
 
 function clearFilters() {
   document.getElementById('search-input').value = '';
-  ['filter-status','filter-priority','filter-severity','filter-category'].forEach(id => { document.getElementById(id).value = ''; });
+  ['filter-status','filter-priority','filter-severity','filter-category'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   renderBugsTable(allBugs);
 }
 
-// ── CREATE BUG ──
+// ── CREATE BUG ───────────────────────────────────────────────────────────────
 function openCreateModal() {
-  ['f-title','f-description','f-module','f-location','f-reported-by'].forEach(id => { document.getElementById(id).value = ''; });
+  ['f-title','f-description','f-module','f-location','f-reported-by'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   document.getElementById('f-severity').value = 'medium';
   document.getElementById('f-environment').value = 'production';
-  ['f-frequency','f-impact','f-reproducibility'].forEach(id => { document.getElementById(id).value = 1; });
+  ['f-frequency','f-impact','f-reproducibility'].forEach(id => {
+    document.getElementById(id).value = 1;
+  });
   document.getElementById('freq-val').textContent = '1';
   document.getElementById('imp-val').textContent = '1';
   document.getElementById('rep-val').textContent = '1';
@@ -825,7 +831,7 @@ async function submitBug() {
 
   const payload = {
     title, description, module,
-    location: document.getElementById('f-location').value.trim(),
+    location: document.getElementById('f-location').value.trim() || '',
     environment: document.getElementById('f-environment').value,
     severity: document.getElementById('f-severity').value,
     frequency: parseInt(document.getElementById('f-frequency').value),
@@ -835,7 +841,7 @@ async function submitBug() {
   };
 
   const btn = document.getElementById('submit-btn');
-  btn.disabled = true; btn.textContent = 'Saving...';
+  btn.disabled = true; btn.textContent = 'Saving…';
   try {
     const bug = await apiFetch('/bugs/', { method: 'POST', body: JSON.stringify(payload) });
     allBugs.unshift(bug);
@@ -843,15 +849,18 @@ async function submitBug() {
     renderDashboard();
     renderBugsTable(allBugs);
     document.getElementById('nav-bug-count').textContent = allBugs.length;
-    toast(`Bug created — Type: ${(bug.bug_type||'').replace('_',' ')}, Priority: ${bug.priority}`, 'success');
+    toast(`Bug created — Type: ${(bug.bug_type||'').replace(/_/g,' ')}, Priority: ${bug.priority}`, 'success');
     openDetail(bug.id);
-  } catch (e) { toast('Error: ' + e.message, 'error'); }
-  finally { btn.disabled = false; btn.textContent = 'Create Bug'; }
+  } catch (e) {
+    toast('Error: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Create Bug';
+  }
 }
 
-// ── DELETE ──
+// ── DELETE ───────────────────────────────────────────────────────────────────
 async function deleteBug(bugId) {
-  if (!confirm('Delete this bug? This cannot be undone.')) return;
+  if (!confirm('Delete this bug? (soft delete — record is kept in DB)')) return;
   try {
     await apiFetch('/bugs/' + bugId, { method: 'DELETE' });
     allBugs = allBugs.filter(b => b.id !== bugId);
@@ -859,11 +868,13 @@ async function deleteBug(bugId) {
     renderBugsTable(allBugs);
     document.getElementById('nav-bug-count').textContent = allBugs.length;
     if (currentBug && currentBug.id === bugId) closeDetail();
-    toast('Bug deleted', 'info');
-  } catch (e) { toast('Delete failed: ' + e.message, 'error'); }
+    toast('Bug deleted (soft)', 'info');
+  } catch (e) {
+    toast('Delete failed: ' + e.message, 'error');
+  }
 }
 
-// ── DETAIL PANEL ──
+// ── DETAIL PANEL ─────────────────────────────────────────────────────────────
 async function openDetail(bugId) {
   try {
     const bug = await apiFetch('/bugs/' + bugId);
@@ -871,51 +882,70 @@ async function openDetail(bugId) {
     document.getElementById('detail-id').textContent = '#' + bug.id.slice(0,8) + '…';
     document.getElementById('detail-title').textContent = bug.title;
 
+    // Fetch history and suggestions in parallel; don't let one failure block the other
     const [histRes, sugRes] = await Promise.allSettled([
       apiFetch('/bugs/' + bugId + '/history'),
       apiFetch('/suggestions/' + bugId),
     ]);
 
     const history = histRes.status === 'fulfilled' ? (histRes.value.history || []) : [];
+    if (histRes.status === 'rejected') {
+      console.warn('History fetch failed:', histRes.reason);
+    }
     const suggestions = sugRes.status === 'fulfilled' ? (sugRes.value.suggestions || []) : [];
 
     document.getElementById('detail-body').innerHTML = buildDetailBody(bug, history, suggestions);
     buildDetailFooter(bug);
     document.getElementById('detail-panel').classList.add('open');
     document.getElementById('detail-overlay').classList.add('open');
-  } catch (e) { toast('Failed to load bug: ' + e.message, 'error'); }
+  } catch (e) {
+    toast('Failed to load bug: ' + e.message, 'error');
+  }
 }
 
 function buildDetailBody(bug, history, suggestions) {
   const sevIdx = ['low','medium','high','critical'].indexOf(bug.severity);
 
-  // Paper section 6.3: Transparent priority score breakdown
-  const scoreBreakdown = `
+  // Paper §6.3 — Transparent priority breakdown
+  const scoreSection = `
     <div class="priority-explain" style="margin-top:12px">
-      <div class="pe-title">Priority Score Breakdown — Transparent (Paper §6.3)</div>
+      <div class="pe-title">Priority Score Breakdown — Paper §6.3 (Transparent, No Black Box)</div>
       <div class="pe-row"><div class="pe-label">Severity (40%)</div><div class="pe-bar"><div class="pe-fill" style="width:${Math.max(10,(sevIdx+1)*25)}%"></div></div><div class="pe-val">${bug.severity}</div></div>
       <div class="pe-row"><div class="pe-label">Impact (30%)</div><div class="pe-bar"><div class="pe-fill" style="width:${bug.impact*10}%"></div></div><div class="pe-val">${bug.impact}/10</div></div>
       <div class="pe-row"><div class="pe-label">Frequency (20%)</div><div class="pe-bar"><div class="pe-fill" style="width:${bug.frequency*10}%"></div></div><div class="pe-val">${bug.frequency}/10</div></div>
       <div class="pe-row"><div class="pe-label">Repro (10%)</div><div class="pe-bar"><div class="pe-fill" style="width:${bug.reproducibility*10}%"></div></div><div class="pe-val">${bug.reproducibility}/10</div></div>
-      ${bug.priority_score != null ? `<div style="margin-top:8px;font-size:11px;color:var(--accent);font-family:var(--mono)">Composite score: ${bug.priority_score} → <strong>${bug.priority}</strong></div>` : ''}
+      ${bug.priority_score != null ? `<div style="margin-top:8px;font-size:11px;color:var(--accent);font-family:var(--mono)">Composite score: <strong>${bug.priority_score}</strong> → <strong>${bug.priority}</strong> &nbsp;|&nbsp; High≥3.5 · Medium≥2.0 · Low&lt;2.0</div>` : ''}
     </div>`;
 
-  // Paper section 6.4: Fix suggestions from historical database
-  const suggestionsHtml = suggestions.length
+  // Paper §6.4 — Fix suggestions from historical database
+  const sugHtml = suggestions.length
     ? suggestions.slice(0,3).map(s => `
         <div class="suggestion-card">
           <div class="suggestion-header">
             <div class="suggestion-tags">
-              <span class="badge type-badge">${esc((s.bug_type||'').replace('_',' '))}</span>
+              <span class="badge type-badge">${esc((s.bug_type||'').replace(/_/g,' '))}</span>
               <span class="badge" style="background:rgba(6,182,212,0.1);color:var(--cyan)">${esc(s.category)}</span>
               ${s.fix_tags ? s.fix_tags.split(',').slice(0,2).map(t=>`<span class="badge" style="background:rgba(255,255,255,0.05);color:var(--text3)">${esc(t.trim())}</span>`).join('') : ''}
             </div>
-            <span class="suggestion-confidence">⬡ ${(s.confidence_score*100).toFixed(0)}%</span>
+            <span class="suggestion-confidence">⬡ ${(s.confidence_score*100).toFixed(0)}% confidence</span>
           </div>
           <div class="suggestion-summary">${esc(s.problem_summary)}</div>
           <div class="suggestion-fix">${esc(s.fix_description)}</div>
         </div>`).join('')
-    : `<div class="no-suggestions"><p>No matching historical fixes found.</p><small>Case flagged for manual review — will be added to fix database.</small></div>`;
+    : `<div class="no-suggestions"><p>No matching historical fixes found.</p><small>Case flagged for manual review — will be added to fix DB (Paper §6.4)</small></div>`;
+
+  // Paper §6.5 — Audit history
+  const histHtml = history.length
+    ? `<div class="history-list">${history.slice(0,15).map(h => `
+        <div class="history-item ${h.field_changed==='status'?'status-change':''}">
+          <span class="history-icon">${h.field_changed==='status'?'⇢':'✎'}</span>
+          <div class="history-content">
+            <div class="history-main"><strong>${h.field_changed}</strong>: ${h.old_value?`<span style="color:var(--text3)">${esc(h.old_value)}</span> → `:''}${esc(h.new_value||'—')}</div>
+            <div class="history-time">${fmtDate(h.changed_at)} · ${esc(h.change_source||'system')}</div>
+            ${h.notes ? `<div class="history-note">"${esc(h.notes)}"</div>` : ''}
+          </div>
+        </div>`).join('')}</div>`
+    : `<div style="color:var(--text3);font-size:12px">No history yet.</div>`;
 
   return `
     <div class="detail-section">
@@ -924,7 +954,7 @@ function buildDetailBody(bug, history, suggestions) {
         <div class="detail-field"><div class="detail-field-label">Status</div><div class="detail-field-value">${statusBadge(bug.status)}</div></div>
         <div class="detail-field"><div class="detail-field-label">Priority</div><div class="detail-field-value">${priBadge(bug.priority)}</div></div>
         <div class="detail-field"><div class="detail-field-label">Severity</div><div class="detail-field-value">${sevBadge(bug.severity)}</div></div>
-        <div class="detail-field"><div class="detail-field-label">Bug Type (Auto §6.2)</div><div class="detail-field-value"><span class="badge type-badge">${esc((bug.bug_type||'—').replace('_',' '))}</span></div></div>
+        <div class="detail-field"><div class="detail-field-label">Bug Type (Auto §6.2)</div><div class="detail-field-value"><span class="badge type-badge">${esc((bug.bug_type||'—').replace(/_/g,' '))}</span></div></div>
         <div class="detail-field"><div class="detail-field-label">Category (Auto §6.2)</div><div class="detail-field-value"><span class="badge" style="background:rgba(6,182,212,0.1);color:var(--cyan)">${esc(bug.category||'—')}</span></div></div>
         <div class="detail-field"><div class="detail-field-label">Module</div><div class="detail-field-value"><span class="bug-module">${esc(bug.module)}</span></div></div>
         <div class="detail-field"><div class="detail-field-label">Location</div><div class="detail-field-value" style="color:var(--text2);font-size:11px">${esc(bug.location||'—')}</div></div>
@@ -934,42 +964,32 @@ function buildDetailBody(bug, history, suggestions) {
         <div class="detail-field"><div class="detail-field-label">Created</div><div class="detail-field-value" style="color:var(--text2);font-size:11px;font-family:var(--mono)">${fmtDate(bug.created_at)}</div></div>
         ${bug.resolved_at ? `<div class="detail-field"><div class="detail-field-label">Resolved At</div><div class="detail-field-value" style="color:var(--green);font-size:11px;font-family:var(--mono)">${fmtDate(bug.resolved_at)}</div></div>` : ''}
       </div>
-      ${scoreBreakdown}
+      ${scoreSection}
     </div>
-
     <div class="detail-section">
       <div class="detail-section-title">Description</div>
       <div class="detail-description">${esc(bug.description)}</div>
     </div>
-
     <div class="detail-section">
-      <div class="detail-section-title">Fix Suggestions from Historical Database (${suggestions.length}) — Paper §6.4</div>
-      ${suggestionsHtml}
+      <div class="detail-section-title">Fix Suggestions from Historical DB (${suggestions.length}) — Paper §6.4</div>
+      ${sugHtml}
     </div>
-
     <div class="detail-section">
-      <div class="detail-section-title">Audit History (${history.length}) — Paper §6.5</div>
-      ${history.length
-        ? `<div class="history-list">${history.slice(0,15).map(h => `
-            <div class="history-item ${h.field_changed==='status'?'status-change':''}">
-              <span class="history-icon">${h.field_changed==='status'?'⇢':'✎'}</span>
-              <div class="history-content">
-                <div class="history-main"><strong>${h.field_changed}</strong>: ${h.old_value?`<span style="color:var(--text3)">${esc(h.old_value)}</span> → `:''}<span>${esc(h.new_value||'—')}</span></div>
-                <div class="history-time">${fmtDate(h.changed_at)} · ${esc(h.change_source||'system')}</div>
-                ${h.notes ? `<div class="history-note">"${esc(h.notes)}"</div>` : ''}
-              </div>
-            </div>`).join('')}</div>`
-        : `<div style="color:var(--text3);font-size:12px">No history yet.</div>`}
+      <div class="detail-section-title">Audit History (${history.length}) — Paper §6.5 FSM Trail</div>
+      ${histHtml}
     </div>`;
 }
 
 function buildDetailFooter(bug) {
-  const footer = document.getElementById('detail-footer');
+  const f = document.getElementById('detail-footer');
   let html = `<button class="btn sm danger" onclick="deleteBug('${bug.id}')">Delete</button>`;
-  if (bug.status === 'New') html += `<button class="btn sm primary" onclick="openAssignModal('${bug.id}')">Assign Bug</button>`;
-  if (['Assigned','In Progress'].includes(bug.status)) html += `<button class="btn sm primary" onclick="openStatusModal('${bug.id}')">Update Status</button>`;
-  if (bug.status === 'Resolved') html += `<span style="font-size:11px;color:var(--green);font-family:var(--mono);padding:6px 8px">✓ Resolved</span>`;
-  footer.innerHTML = html;
+  if (bug.status === 'New')
+    html += `<button class="btn sm primary" onclick="openAssignModal('${bug.id}')">Assign Bug →</button>`;
+  if (['Assigned','In Progress'].includes(bug.status))
+    html += `<button class="btn sm primary" onclick="openStatusModal('${bug.id}')">Update Status →</button>`;
+  if (bug.status === 'Resolved')
+    html += `<span style="font-size:11px;color:var(--green);font-family:var(--mono);padding:6px 8px">✓ Resolved</span>`;
+  f.innerHTML = html;
 }
 
 function closeDetail() {
@@ -978,40 +998,40 @@ function closeDetail() {
   currentBug = null;
 }
 
-// ── ASSIGN ──
+// ── ASSIGN ───────────────────────────────────────────────────────────────────
 function openAssignModal(bugId) {
-  activeBugIdForAction = bugId;
+  activeBugId = bugId;
   document.getElementById('assign-to').value = '';
   document.getElementById('assign-note').value = '';
   openModal('assign-modal');
 }
 
 async function submitAssign() {
-  const assignedTo = document.getElementById('assign-to').value.trim();
-  if (!assignedTo || assignedTo.length < 2) return toast('Assignee name required (min 2 chars)', 'error');
+  const to = document.getElementById('assign-to').value.trim();
+  if (!to || to.length < 2) return toast('Assignee name required (min 2 chars)', 'error');
   try {
-    await apiFetch('/bugs/' + activeBugIdForAction + '/assign', {
+    await apiFetch('/bugs/' + activeBugId + '/assign', {
       method: 'POST',
-      body: JSON.stringify({ assigned_to: assignedTo, note: document.getElementById('assign-note').value.trim() || null }),
+      body: JSON.stringify({ assigned_to: to, note: document.getElementById('assign-note').value.trim() || null }),
     });
     closeModal('assign-modal');
-    toast('Bug assigned to ' + assignedTo, 'success');
+    toast('Bug assigned to ' + to, 'success');
     await loadBugs();
-    if (currentBug) openDetail(activeBugIdForAction);
+    if (currentBug) openDetail(activeBugId);
   } catch (e) { toast('Assign failed: ' + e.message, 'error'); }
 }
 
-// ── STATUS ──
-const TRANSITIONS = { 'New':['Assigned'], 'Assigned':['In Progress'], 'In Progress':['Resolved'], 'Resolved':[] };
+// ── STATUS ───────────────────────────────────────────────────────────────────
+const FSM = { 'New':['Assigned'], 'Assigned':['In Progress'], 'In Progress':['Resolved'], 'Resolved':[] };
 
 function openStatusModal(bugId) {
-  activeBugIdForAction = bugId;
+  activeBugId = bugId;
   const bug = allBugs.find(b => b.id === bugId) || currentBug;
   if (!bug) return;
-  const allowed = TRANSITIONS[bug.status] || [];
+  const allowed = FSM[bug.status] || [];
   if (!allowed.length) return toast('No transitions available from ' + bug.status, 'info');
   document.getElementById('transition-info-text').innerHTML =
-    `Current: <strong style="color:var(--accent)">${bug.status}</strong> <span class="arrow">→</span> select new status`;
+    `Current status: <strong style="color:var(--accent)">${bug.status}</strong> <span class="arrow">→</span> select next`;
   const sel = document.getElementById('new-status');
   sel.innerHTML = allowed.map(s => `<option value="${s}">${s}</option>`).join('');
   document.getElementById('status-note').value = '';
@@ -1022,40 +1042,40 @@ async function submitStatus() {
   const newStatus = document.getElementById('new-status').value;
   const note = document.getElementById('status-note').value.trim();
   try {
-    await apiFetch('/bugs/' + activeBugIdForAction + '/status', {
+    await apiFetch('/bugs/' + activeBugId + '/status', {
       method: 'POST', body: JSON.stringify({ status: newStatus, note: note || null }),
     });
     closeModal('status-modal');
-    toast('Status updated to ' + newStatus, 'success');
+    toast('Status → ' + newStatus, 'success');
     await loadBugs();
-    if (currentBug) openDetail(activeBugIdForAction);
+    if (currentBug) openDetail(activeBugId);
   } catch (e) { toast('Status update failed: ' + e.message, 'error'); }
 }
 
-// ── MODAL HELPERS ──
+// ── MODAL HELPERS ────────────────────────────────────────────────────────────
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
 });
 
-// ── BADGES ──
-function sevBadge(sev) {
-  const cls = { critical:'sev-critical', high:'sev-high', medium:'sev-medium', low:'sev-low' };
-  return `<span class="badge ${cls[sev]||'sev-medium'}">${(sev||'').toUpperCase()}</span>`;
+// ── BADGES ───────────────────────────────────────────────────────────────────
+function sevBadge(s) {
+  const c = {critical:'sev-critical',high:'sev-high',medium:'sev-medium',low:'sev-low'};
+  return `<span class="badge ${c[s]||'sev-medium'}">${(s||'').toUpperCase()}</span>`;
 }
-function priBadge(pri) {
-  const cls = { High:'pri-high', Medium:'pri-medium', Low:'pri-low' };
-  return `<span class="badge ${cls[pri]||'pri-low'}">${pri||'Low'}</span>`;
+function priBadge(p) {
+  const c = {High:'pri-high',Medium:'pri-medium',Low:'pri-low'};
+  return `<span class="badge ${c[p]||'pri-low'}">${p||'Low'}</span>`;
 }
-function statusBadge(st) {
-  const cls = { 'New':'status-new','Assigned':'status-assigned','In Progress':'status-in_progress','Resolved':'status-resolved' };
-  return `<span class="badge ${cls[st]||'status-new'}">${st||'New'}</span>`;
+function statusBadge(s) {
+  const c = {'New':'status-new','Assigned':'status-assigned','In Progress':'status-in_progress','Resolved':'status-resolved'};
+  return `<span class="badge ${c[s]||'status-new'}">${s||'New'}</span>`;
 }
 
-// ── TOAST ──
+// ── TOAST ────────────────────────────────────────────────────────────────────
 function toast(msg, type = 'info') {
-  const icons = { success:'✓', error:'✕', info:'ℹ' };
+  const icons = {success:'✓',error:'✕',info:'ℹ'};
   const el = document.createElement('div');
   el.className = `toast ${type}`;
   el.innerHTML = `<span>${icons[type]||'•'}</span><span>${esc(msg)}</span>`;
@@ -1063,31 +1083,35 @@ function toast(msg, type = 'info') {
   setTimeout(() => el.remove(), 4000);
 }
 
-// ── UTILS ──
-function esc(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+// ── UTILS ────────────────────────────────────────────────────────────────────
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function fmtDate(dateStr) {
-  if (!dateStr) return '—';
-  try { return new Date(dateStr).toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' }); }
-  catch { return dateStr; }
+function fmtDate(d) {
+  if (!d) return '—';
+  try { return new Date(d).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'}); }
+  catch { return d; }
 }
 
-// ── KEYBOARD ──
+// ── KEYBOARD ─────────────────────────────────────────────────────────────────
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
     closeDetail();
   }
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); document.getElementById('search-input').focus(); }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+  }
 });
 
-// ── INIT ──
+// ── INIT ─────────────────────────────────────────────────────────────────────
 (async () => {
   await checkHealth();
   await loadBugs();
-  setInterval(checkHealth, 30000);
+  // Poll health every 60s — NOT every second (was spamming server logs)
+  setInterval(checkHealth, HEALTH_INTERVAL_MS);
 })();
 </script>
 </body>
